@@ -1,0 +1,18 @@
+{
+  "author": "wookiehangover <sam@quickleft.com>",
+  "name": "bombers",
+  "version": "0.0.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~0.6.5"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "underscore": "~1.2.3",
+    "handlebars-jst": "~0.0.3",
+    "stitch": "~0.3.2",
+    "uglify-js": "~1.1.1"
+  }
+}
