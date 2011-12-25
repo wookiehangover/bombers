@@ -206,12 +206,34 @@ td { vertical-align: top; }
    Author:
    ========================================================================== */
 
+html, body { height: 100%; }
+
+#main { height: 100%; }
 
 
+#cover { background: #eaeaea url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIHWOw56o98///fwZkzAjioAMmdAEQn3hBAO6aEIuiymm6AAAAAElFTkSuQmCC); }
 
+article { min-height: 100%; background: #eaeaea; width: 100%; display: block; overflow:hidden; position: fixed; top:0; left: 0; }
+article.ui-active { z-index: 200; display:block; }
+article > img { width: 100%; display: block; margin: 0 auto; }
+article:nth-of-type(2n) { background: #ddd; ;}
 
+article > pre { margin-left: 20%; font-weight: bold;}
 
+article > p {
+  margin: 3em auto;
+  width: 960px;
+  -moz-column-count: 2;
+  -moz-column-gap: 20px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 20px;
+  column-count: 2;
+  column-gap: 20px;
+}
 
+article > h2 { width: 960px; margin: 1em auto 0; font-size: 4em; }
+article > h3,
+article > time { width: 960px; margin: 1em auto; font-size: 2em; }
 
 
 
