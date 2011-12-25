@@ -87,4 +87,4 @@ task 'watch', 'run appropriate build whenever app or template files change', ->
       else
         invoke 'build:app'
 
-    fs.watch( d, _.throttle( handler, 1000 ) )
+    fs.watch( d, _.throttle( handler, 50 ) )
