@@ -58,7 +58,12 @@ task 'build:app', 'concat application with Stitch', ->
 task 'build:libs', 'concat all external libs with Stitch',->
   root  = LIB_PATH
   paths = [ root ]
-  deps  = [ "#{root}/underscore.js", "#{root}/handlebars.1.0.0.beta.2.js" ]
+  deps  = [
+    "#{root}/underscore.js"
+    "#{root}/handlebars.1.0.0.beta.2.js"
+    "#{root}/backbone.js"
+    "#{root}/transformjs.1.0.beta.2.js"
+  ]
 
   sew "#{SRC_DIR}/libs.js", paths, deps
 
