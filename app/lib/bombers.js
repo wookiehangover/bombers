@@ -1,18 +1,4 @@
-var Backbone = require('backbone');
-
 this.Bombers = {
-  module: function() {
-    var modules = {};
-
-    return function(name) {
-      if (modules[name]) {
-        return modules[name];
-      }
-
-      return modules[name] = { Views: {} };
-    };
-  }(),
-
   app: _.extend({}, Backbone.Events)
 };
 
@@ -24,8 +10,9 @@ jQuery(function($) {
   // method, to be processed by the router.
   $(document).delegate("a", "click", function(evt) {
     // Get the anchor href and protcol
-    var href = $(this).attr("href");
-    var protocol = this.protocol + "//";
+    var
+      href = $(this).attr("href"),
+      protocol = this.protocol + "//";
 
     // Ensure the protocol is not part of URL, meaning its relative.
     if (href.slice(protocol.length) !== protocol) {
@@ -49,7 +36,7 @@ jQuery(function($) {
     },
 
     index: function() {
-      
+      $('html,body').stop().animate({ scrollTop: 0 }, 100);
     }
   });
 
