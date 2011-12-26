@@ -10,7 +10,6 @@ module.exports = Backbone.View.extend({
 
     this.bind( 'show', this.onShow, this );
     this.bind( 'hide', this.onHide, this );
-
   },
 
   onShow: function(){
@@ -22,17 +21,29 @@ module.exports = Backbone.View.extend({
     this.el.removeClass('ui-active');
   },
 
-  show: function(){
-    var
-      current = $('.ui-active').index(),
-      speed   = current === this.index ? 600 : 600 * this.index;
+  show: function( time, offset ){
+    offset = offset || 0;
 
-    $('html,body').stop().animate({ scrollTop: this.el.data('height') }, speed, 'easeInOutQuad' );
+    var
+      dfd = new $.Deferred(),
+      current = $('.ui-active').index(),
+      speed   = time || ( current === this.index ? 600 : 600 * this.index );
+
+    $('html,body')
+      .stop()
+      .animate({ scrollTop: this.el.data('height') + offset }, speed, 'easeInOutQuad', function(){
+        dfd.resolve();
+      });
+
+    return dfd.promise();
   },
 
   navigate: function(){
+
     if( $('html,body').is(':animated') === false ){
       Bombers.app.router.navigate( this.route, false );
     }
+
+    return this;
   }
 });
