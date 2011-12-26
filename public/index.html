@@ -6,58 +6,41 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
 
-  <title>Backbone Boilerplate</title>
+  <title>Boulder County Bombers</title>
 </head>
 
 <body>
   <!-- Main container -->
   <div role="main" id="main">
-    <article class="ui-active" id="cover">
-       <pre>
-       ,ggggggggggg,                                                                 
-      dP"""88""""""Y8,                         ,dPYb,         8I                     
-      Yb,  88      `8b                         IP'`Yb         8I                     
-       `"  88      ,8P                         I8  8I         8I                     
-           88aaaad8P"                          I8  8'         8I                     
-           88""""Y8ba    ,ggggg,   gg      gg  I8 dP    ,gggg,8I   ,ggg,    ,gggggg, 
-           88      `8b  dP"  "Y8gggI8      8I  I8dP    dP"  "Y8I  i8" "8i   dP""""8I 
-           88      ,8P i8'    ,8I  I8,    ,8I  I8P    i8'    ,8I  I8, ,8I  ,8'    8I 
-           88_____,d8',d8,   ,d8' ,d8b,  ,d8b,,d8b,_ ,d8,   ,d8b, `YbadP' ,dP     Y8,
-          88888888P"  P"Y8888P"   8P'"Y88P"`Y88P'"Y88P"Y8888P"`Y8888P"Y8888P      `Y8
-      </pre>
-      <pre>
-             ,gggg,                                                        
-           ,88"""Y8b,                                       I8             
-          d8"     `Y8                                       I8             
-         d8'   8b  d8                                    88888888          
-        ,8I    "Y88P'                                       I8             
-        I8'            ,ggggg,   gg      gg   ,ggg,,ggg,    I8   gg     gg 
-        d8            dP"  "Y8gggI8      8I  ,8" "8P" "8,   I8   I8     8I 
-        Y8,          i8'    ,8I  I8,    ,8I  I8   8I   8I  ,I8,  I8,   ,8I 
-        `Yba,,_____,,d8,   ,d8' ,d8b,  ,d8b,,dP   8I   Yb,,d88b,,d8b, ,d8I 
-          `"Y8888888P"Y8888P"   8P'"Y88P"`Y88P'   8I   `Y88P""Y8P""Y88P"888
-                                                                      ,d8I'
-                                                                    ,dP'8I 
-                                                                   ,8"  8I 
-                                                                   I8   8I 
-                                                                   `8, ,8I 
-                                                                    `Y8P" 
-      </pre>
-      <pre>
-       ,ggggggggggg,                                                                          
-      dP"""88""""""Y8,                                ,dPYb,                                  
-      Yb,  88      `8b                                IP'`Yb                                  
-       `"  88      ,8P                                I8  8I                                  
-           88aaaad8P"                                 I8  8'                                  
-           88""""Y8ba    ,ggggg,    ,ggg,,ggg,,ggg,   I8 dP       ,ggg,    ,gggggg,    ,g,    
-           88      `8b  dP"  "Y8ggg,8" "8P" "8P" "8,  I8dP   88ggi8" "8i   dP""""8I   ,8'8,   
-           88      ,8P i8'    ,8I  I8   8I   8I   8I  I8P    8I  I8, ,8I  ,8'    8I  ,8'  Yb  
-           88_____,d8',d8,   ,d8' ,dP   8I   8I   Yb,,d8b,  ,8I  `YbadP' ,dP     Y8,,8'_   8) 
-          88888888P"  P"Y8888P"   8P'   8I   8I   `Y88P'"Y88P"' 888P"Y8888P      `Y8P' "YY8P8P
-      </pre>
+
+    <article class="ui-active" id="cover" data-route="/">
+      <h1>Boulder County Bombers</h1>
+      <h3 class="alt">Women's Roller Derby League</h3>
     </article>
-    <article>
+
+    <article data-route="false" id="tiffany">
+      <img src=/assets/img/TiffKellyKapowski.jpeg>
+      <h1 class="bottom">Saved By the Belt.</h1>
+    </article>
+
+    <!--<article>-->
+      <!--<img src=/assets/img/EVhVw7gKnm9kjboxbOv53u57o1_500.jpeg>-->
+      <!--<h1 class="bottom">What happens in a meadow at dusk?</h1>-->
+    <!--</article>-->
+    <!--<article>-->
+      <!--<img src=/assets/img/5859461128_a0a7d1c715_b.jpg>-->
+      <!--<h1 class="bottom">Ask about our owlery.</h1>-->
+    <!--</article>-->
+
+    <article id="new-recruit-night">
+      <h1>New Recruit Night Wednesday</h1>
+      <h2>Everything you've always wanted.</h2>
+      <h3>Sun Down Saloon 8pm - 10pm</h3>
+    </article>
+
+    <article id="blog">
       <h2>Lorem Ipsum</h2>
       <p>Shank strip steak bresaola leberkäse, pork belly jowl short loin pig
       ground round shankle pastrami ham. Jowl cow turkey shoulder. Hamburger
@@ -129,14 +112,17 @@
 
       <h3>July 31, 2012<br/>:: Ruckus</h3>
     </article>
-    <article>
-      <img src=/assets/img/b5.jpg>
+
+    <article id="video">
+      <iframe src="http://player.vimeo.com/video/27380304?title=0&amp;byline=0&amp;portrait=0&amp;color=FFC200" width="960" height="540" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+      <h1>Sit Dolor Amet</h1>
     </article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
-    <article></article>
+
+    <article id="contact">
+      <!--<img src=/assets/img/tumblr_lo3quyS6x81qfsmplo1_1280.gif>-->
+      <h2 class="bottom">Contact</h2>
+    </article>
+
   </div>
 
   <!-- Dependencies -->

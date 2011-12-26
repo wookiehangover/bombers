@@ -10,16 +10,15 @@
   <script src="vendor/jslitmus.js"></script>
 
   <!-- App dependencies, libs -->
-  
-  <script src="../assets/js/libs/underscore.js"></script>
-  <script src="../assets/js/libs/backbone.js"></script>
-  
-  <!-- Include your application load here! -->
-  <script src="../app/index.js"></script>
-  
+  <script src=../assets/js/src/libs.js></script>
+  <script src=../assets/js/src/templates.js></script>
+
+  <!-- Application -->
+  <script src=../assets/js/src/app.js></script>
+
   <!-- load test modules -->
   <script src="unit/core.js"></script>
-  
+
 </head>
 <body>
   <div class="dataset-test">
@@ -27,6 +26,7 @@
     <h2 id="qunit-banner"></h2>
     <h2 id="qunit-userAgent"></h2>
     <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture"></div>
     <br />
     <h1 class="qunit-header">Speed Suite</h1>
   </div>

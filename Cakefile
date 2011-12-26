@@ -11,8 +11,8 @@ uglify  = require('uglify-js')
 # Configuration
 
 APP_PATH  = path.resolve('./app')
-LIB_PATH  = path.resolve('./assets/js/libs')
-SRC_DIR   = 'assets/js/src'
+LIB_PATH  = path.resolve('./public/assets/js/libs')
+SRC_DIR   = 'public/assets/js/src'
 VIEWS_DIR = 'app/views'
 
 # Helpers for minifying with [uglify](https://github.com/mishoo/UglifyJS) and
