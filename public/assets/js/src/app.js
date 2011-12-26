@@ -119,6 +119,7 @@ module.exports = Backbone.View.extend({
   initialize: function( params ){
     this.initializePages();
     this.scroll();
+    this.keyboard();
 
     var _this = this;
 
@@ -128,6 +129,8 @@ module.exports = Backbone.View.extend({
 
     return this;
   },
+
+  active_index: {},
 
   pages: {},
 
@@ -178,34 +181,35 @@ module.exports = Backbone.View.extend({
         active_height = _active.data('height'),
         scroll_offset = scroll_pos - active_height;
 
+      _this.active_index = _active.index();
+
       // Scroll the active page and make sure the page below is visible
       _active
-        .css({ 'translateY': '-'+ scroll_offset })
-        .next().show();
+        .css({ 'translateY': '-'+ scroll_offset });
 
       // When scrolling to the top of the page, activate sections in reverse
       // order
       if( scroll_offset < 0  ) {
-        return _this.setActive( scroll_pos, 'prev' );
+        return _this.setActive( 'prev' );
       }
 
       // Activate the next section when the window passes the active section
-      if( _active.height() - scroll_offset  < 0 ){
-        return _this.setActive( scroll_pos );
+      if( _active.height() - scroll_offset  <= 0 ){
+        return _this.setActive( 'next' );
       }
 
       return false;
     });
   },
 
-  setActive: function( offset, method ){
-    method = method || 'next';
+  setActive: function( direction ){
+    direction = direction || 'next';
 
     var
       current    = this.$('.ui-active'),
-      new_active = current[ method ]();
+      new_active = current[ direction ]();
 
-    if( method === 'prev' ){
+    if( direction === 'prev' ){
       current.css('translateY', 0);
     }
 
@@ -214,6 +218,56 @@ module.exports = Backbone.View.extend({
       this.pages[ new_active.attr('id') ].trigger('show');
     }
 
+  },
+
+  navigate: function( direction ){
+    direction = direction || 'next';
+
+    var
+      current = this.$('.ui-active'),
+      next    = current[ direction ]();
+
+    if( next.length ){
+      next = this.pages[ next.attr('id') ];
+
+      next.show( 600 ).done(function(){
+        if( direction === 'prev' )
+          $('html,body').stop();
+
+        next.navigate();
+      });
+    }
+
+  },
+
+  keyboard: function(){
+    var
+      _this   = this,
+      key_map = {};
+
+    // down + right
+    key_map[40] = key_map[39] = function(){
+      _this.navigate('next');
+    };
+
+    // up + left
+    key_map[38] = key_map[37] = function(){
+      _this.navigate('prev');
+    };
+
+    function onKeydown( event ){
+      if( $('html,body').is(':animated') === true )
+        return;
+
+      var key = event.which;
+
+      if( key in key_map ){
+        key_map[ key ]();
+        return false;
+      }
+    }
+
+    $(window).on('keydown', _.throttle( onKeydown, 500 ) );
   }
 
 });
@@ -229,7 +283,6 @@ module.exports = Backbone.View.extend({
 
     this.bind( 'show', this.onShow, this );
     this.bind( 'hide', this.onHide, this );
-
   },
 
   onShow: function(){
@@ -241,18 +294,30 @@ module.exports = Backbone.View.extend({
     this.el.removeClass('ui-active');
   },
 
-  show: function(){
-    var
-      current = $('.ui-active').index(),
-      speed   = current === this.index ? 600 : 600 * this.index;
+  show: function( time, offset ){
+    offset = offset || 0;
 
-    $('html,body').stop().animate({ scrollTop: this.el.data('height') }, speed, 'easeInOutQuad' );
+    var
+      dfd = new $.Deferred(),
+      current = $('.ui-active').index(),
+      speed   = time || ( current === this.index ? 600 : 600 * this.index );
+
+    $('html,body')
+      .stop()
+      .animate({ scrollTop: this.el.data('height') + offset }, speed, 'easeInOutQuad', function(){
+        dfd.resolve();
+      });
+
+    return dfd.promise();
   },
 
   navigate: function(){
+
     if( $('html,body').is(':animated') === false ){
       Bombers.app.router.navigate( this.route, false );
     }
+
+    return this;
   }
 });
 }});

@@ -243,7 +243,7 @@ article .bottom { position: absolute; bottom: 100px; left: 100px; }
 
 article > iframe { margin: 100px auto 0; display: block; }
 
-article.footer { background: #eaeaea; color: #222; }
+article#contact { background: #eaeaea; color: #222; }
 
 
 /* ==|== media queries ======================================================
