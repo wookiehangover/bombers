@@ -15,12 +15,18 @@ module.exports = Backbone.View.extend({
       _this.initializePages();
     });
 
-    this.$('.ui-active').show().next().show();
-
     return this;
   },
 
   pages: {},
+
+  getPage: function( id ){
+    return _( this.pages ).find(function( page ){
+      if( page.id == id || page.route == id ){
+        return true;
+      }
+    });
+  },
 
   initializePages: function(){
     var
@@ -46,6 +52,7 @@ module.exports = Backbone.View.extend({
     });
 
     this.el.css('height', _height);
+
   },
 
   scroll: function(){
