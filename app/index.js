@@ -8,19 +8,23 @@ Bombers.init = function(){
 
   var Router = Backbone.Router.extend({
     routes: {
-      "": "index"
+      ":page": "page"
     },
 
-    index: function() {
-      $('html,body').animate({ scrollTop: 0 }, 100);
+    page: function( id ){
+      if( !id ) return;
+
+      try {
+        app.view.getPage( id ).show();
+      } catch (error) {
+        throw new Error('404 Not Found!');
+      }
     }
   });
 
   app.router = new Router();
 
   app.view = new Bombers.Views.App();
-
-
 
   $(document).delegate("a", "click", function(evt) {
     // Get the anchor href and protcol
