@@ -9,7 +9,7 @@
     "node": "~0.6.5"
   },
   "dependencies": {
-    "strata": "git://github.com/wookiehangover/strata.git",
+    "strata": "https://s3.amazonaws.com/wookie-buildpack/strata-v0.10.0patch.tar.gz",
     "handlebars": "1.0.2beta"
   },
   "devDependencies": {
