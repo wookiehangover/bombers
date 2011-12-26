@@ -8,7 +8,10 @@
   "engines": {
     "node": "~0.6.5"
   },
-  "dependencies": {},
+  "dependencies": {
+    "strata": "git://github.com/wookiehangover/strata.git",
+    "handlebars": "1.0.2beta"
+  },
   "devDependencies": {
     "underscore": "~1.2.3",
     "handlebars-jst": "~0.0.3",
