@@ -20,7 +20,7 @@
       <h3 class="alt">Women's Roller Derby League</h3>
     </article>
 
-    <article data-route="false" id="tiffany">
+    <article data-route="flyer" id="tiffany">
       <img src=/assets/img/TiffKellyKapowski.jpeg>
       <h1 class="bottom">Saved By the Belt.</h1>
     </article>
@@ -119,23 +119,29 @@
     </article>
 
     <article id="contact">
-      <!--<img src=/assets/img/tumblr_lo3quyS6x81qfsmplo1_1280.gif>-->
+      <img src=/assets/img/tumblr_lo3quyS6x81qfsmplo1_1280.gif>
       <h2 class="bottom">Contact</h2>
     </article>
 
   </div>
 
-  <!-- Dependencies -->
+{{#if production}}
   <script src=//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js></script>
   <script>!window.jQuery && document.write('<script src="/assets/js/libs/jquery.js"><\/script>')</script>
-
+  <script src=/assets/js/src/libs.min.js></script>
+  <script src=/assets/js/src/templates.min.js></script>
+  <script src=/assets/js/src/app.min.js></script>
+{{else}}
+  <script src=/assets/js/libs/jquery.js></script>
   <script src=/assets/js/src/libs.js></script>
   <script src=/assets/js/src/templates.js></script>
-
-  <!-- Application -->
   <script src=/assets/js/src/app.js></script>
+{{/if}}
   <script>
-    require('index');
+    (function(){
+      require('index');
+    }).call(this);
   </script>
+
 </body>
 </html>
