@@ -58,19 +58,23 @@ Bombers.init = function(){
 
   var Router = Backbone.Router.extend({
     routes: {
-      "": "index"
+      ":page": "page"
     },
 
-    index: function() {
-      $('html,body').animate({ scrollTop: 0 }, 100);
+    page: function( id ){
+      if( !id ) return;
+
+      try {
+        app.view.getPage( id ).show();
+      } catch (error) {
+        throw new Error('404 Not Found!');
+      }
     }
   });
 
   app.router = new Router();
 
   app.view = new Bombers.Views.App();
-
-
 
   $(document).delegate("a", "click", function(evt) {
     // Get the anchor href and protcol
@@ -122,12 +126,18 @@ module.exports = Backbone.View.extend({
       _this.initializePages();
     });
 
-    this.$('.ui-active').show().next().show();
-
     return this;
   },
 
   pages: {},
+
+  getPage: function( id ){
+    return _( this.pages ).find(function( page ){
+      if( page.id == id || page.route == id ){
+        return true;
+      }
+    });
+  },
 
   initializePages: function(){
     var
@@ -153,6 +163,7 @@ module.exports = Backbone.View.extend({
     });
 
     this.el.css('height', _height);
+
   },
 
   scroll: function(){
@@ -219,20 +230,29 @@ module.exports = Backbone.View.extend({
     this.bind( 'show', this.onShow, this );
     this.bind( 'hide', this.onHide, this );
 
-    //Bombers.app.router.route( this.id, this.id, function( id ){
-      //console.log(id);
-    //});
   },
 
   onShow: function(){
     this.el.addClass('ui-active');
-    Bombers.app.router.navigate( this.route );
+    this.navigate();
   },
 
   onHide: function(){
     this.el.removeClass('ui-active');
+  },
+
+  show: function(){
+    var
+      current = $('.ui-active').index(),
+      speed   = current === this.index ? 600 : 600 * this.index;
+
+    $('html,body').stop().animate({ scrollTop: this.el.data('height') }, speed, 'easeInOutQuad' );
+  },
+
+  navigate: function(){
+    if( $('html,body').is(':animated') === false ){
+      Bombers.app.router.navigate( this.route, false );
+    }
   }
-
-
 });
 }});
