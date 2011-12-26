@@ -69,7 +69,7 @@ module.exports = Backbone.View.extend({
 
       // Scroll the active page and make sure the page below is visible
       _active
-        .css({ 'translateY': '-'+ scroll_offset })
+        .css({ 'margin-top': '-'+ scroll_offset +'px' })
         .next().show();
 
       // When scrolling to the top of the page, activate sections in reverse
@@ -95,7 +95,7 @@ module.exports = Backbone.View.extend({
       new_active = current[ method ]();
 
     if( method === 'prev' ){
-      current.css('translateY', 0);
+      current.css('margin-top', 0);
     }
 
     if( new_active.length ){
